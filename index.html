@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payoo</title>
+    <!-- daisyui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <!-- tailwiend css link  -->
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-[#f4f5f7] h-[100vh] flex justify-center flex-col items-center">
+    
+    <div class="h-[130px] w-[300px] bg-[url(./image/bg.png)] bg-cover flex justify-center items-center">
+        <img src="./image//Group.png" alt="">
+    </div>
+    <form class=" rounded-lg bg-white p-8 w-[350px]">
+        <div>
+            <label class="font-semibold" for="">Mobail Number</label><br>
+            <input id="mobaile-number" type="text" placeholder="Enter Your Number" class="input bg-[#f4f5f7] mt-3 rounded-3xl" />
+        </div>
+         <div class="mt-5">
+            <label class="font-semibold" for="">4 Digit Pin</label><br>
+            <input id="pin-number" type="text" placeholder="Enter Your 4 Digit pi" class="input bg-[#f4f5f7] mt-3 rounded-3xl" />
+        </div>
+        <button class="btn bg-[#0874F2] mt-5 w-full rounded-3xl text-white" id="loginButton">Login</button>
+    </form>
+
+
+
+
+    <!-- js script extra ling -->
+     <script src="./script.js"></script>
+</body>
+</html>

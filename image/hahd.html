@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payooo Wallet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <!-- Header -->
+  <header class="bg-white shadow p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold text-blue-600">💳 $45000</h1>
+    <button id="logoutBtn" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg">
+      Log Out
+    </button>
+  </header>
+
+  <!-- Welcome -->
+  <section class="bg-white p-6 shadow mt-2">
+    <h2 class="text-lg font-bold">🔥 Welcome to Payooo!</h2>
+    <p class="text-gray-500 text-sm">Enjoy easy and convenient financial services with us.<br>
+    Cashout charge is low and secure.</p>
+  </section>
+
+  <!-- Services -->
+  <section class="grid grid-cols-3 gap-4 bg-white p-6 mt-2 shadow">
+    <button class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50">
+      <span>💰</span>
+      <span>Add Money</span>
+    </button>
+    <button class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50">
+      <span>💸</span>
+      <span>Cashout</span>
+    </button>
+    <button class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50">
+      <span>🔄</span>
+      <span>Transfer</span>
+    </button>
+    <button class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50">
+      <span>🎁</span>
+      <span>Get Bonus</span>
+    </button>
+    <button class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50">
+      <span>🧾</span>
+      <span>Pay Bill</span>
+    </button>
+    <button class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50">
+      <span>📊</span>
+      <span>Transactions</span>
+    </button>
+  </section>
+
+  <!-- Add Money Form -->
+  <section class="bg-white p-6 mt-4 shadow">
+    <h2 class="text-lg font-bold mb-4">Add Money</h2>
+    <form id="addMoneyForm" class="space-y-4">
+      
+      <!-- Bank Select -->
+      <div>
+        <label class="block text-sm font-medium">Select A Bank</label>
+        <select id="bank" class="w-full border rounded-lg p-2 focus:ring focus:ring-blue-200">
+          <option value="">Pick a bank</option>
+          <option value="dbbl">DBBL</option>
+          <option value="bkash">bKash</option>
+          <option value="nagad">Nagad</option>
+        </select>
+      </div>
+
+      <!-- Account Number -->
+      <div>
+        <label class="block text-sm font-medium">Bank Account Number</label>
+        <input id="account" type="text" maxlength="11" placeholder="Enter 11 digit Account Number" class="w-full border rounded-lg p-2 focus:ring focus:ring-blue-200">
+      </div>
+
+      <!-- Amount -->
+      <div>
+        <label class="block text-sm font-medium">Amount to Add</label>
+        <input id="amount" type="number" placeholder="Enter Amount" class="w-full border rounded-lg p-2 focus:ring focus:ring-blue-200">
+      </div>
+
+      <!-- Pin -->
+      <div>
+        <label class="block text-sm font-medium">Pin Number</label>
+        <input id="pin" type="password" maxlength="4" placeholder="Enter 4 digit pin" class="w-full border rounded-lg p-2 focus:ring focus:ring-blue-200">
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Add Money</button>
+    </form>
+  </section>
+
+  <!-- JS -->
+  <script>
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      alert("You have logged out!");
+    });
+
+    // Add Money Form
+    document.getElementById('addMoneyForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      let bank = document.getElementById('bank').value;
+      let account = document.getElementById('account').value;
+      let amount = document.getElementById('amount').value;
+      let pin = document.getElementById('pin').value;
+
+      if(!bank || account.length !== 11 || !amount || pin.length !== 4){
+        alert("⚠️ Please fill all fields correctly!");
+        return;
+      }
+
+      alert(`✅ ${amount} tk added successfully from ${bank.toUpperCase()}!`);
+      e.target.reset();
+    });
+  </script>
+
+</body>
+</html>
