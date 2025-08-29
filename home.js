@@ -1,29 +1,29 @@
 // add money featcher
+
+const validPin = 1234;
 document.getElementById("add-mpney-btn").addEventListener('click', function(e){
     e.preventDefault();
-    console.log("oloso belay jodi gan kha ")
-    
-    const validPin = 1234;
     const bank = document.getElementById("bank").value
     const accountNumber = document.getElementById("accound-number").value
-    const ammaunt = parseInt(document.getElementById("add-ammaun").value)
 
-    const pin = document.getElementById("add-pin").value
+    const amound = parseInt( document.getElementById("add-ammaun").value)
+
+    const pinNumber = parseInt(document.getElementById("add-pin").value)
+
+    const avileAbleBlance = parseInt(document.getElementById("avilable-balance").innerText)
 
     if(accountNumber.length <11){
-        alert("plse provid valid account number")
-        return
+        alert("Invalid Accound Number")
+        return;
     }
-    if(pin !== validPin){
-        alert("plse provid valid pin Number")
-        return
+    if(pinNumber !== validPin){
+        alert("Invalid Pin Number")
+        return;
     }
-    const avileAbleBlance = parseInt(document.getElementById("avilable-balance").innerText)
-    console.log(avileAbleBlance)
+    const totalNewavileableBlance = amound + avileAbleBlance;
 
-    const newAvilableBalance = ammaunt +avileAbleBlance
-    
-    document.getElementById("avilable-balance").innerText = newAvilableBalance
+    document.getElementById("avilable-balance").innerText = totalNewavileableBlance
+   
 })
 
 // cash out money fetcher 

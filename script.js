@@ -6,21 +6,16 @@ document.getElementById('loginButton').addEventListener('click', function(e){
     const mobailNumber = 123456789;
     const pinNumber = 1234;
 
-    const mobailNumberValue = document.getElementById('mobaile-number').value;
+    const mobaileNumberValue = document.getElementById("mobaile-number").value
+    const mobaileNumberConverted = parseInt(mobaileNumberValue);
+    const pinNumberValue =  document.getElementById("pin-number").value
 
-    const mobaileNumbetValueConverter = parseInt(mobailNumberValue);
+    const pinNumberValueConverted = parseInt(pinNumberValue)
 
-    const pinNumberValue = document.getElementById('pin-number').value;
-    const pinNumberValueConvertor = parseInt(pinNumberValue);
-
-    console.log(mobaileNumbetValueConverter,pinNumberValueConvertor)
-
-    if(mobaileNumbetValueConverter === mobailNumber && pinNumberValueConvertor === pinNumber){
+    if(mobaileNumberConverted === mobailNumber  && pinNumberValueConverted === pinNumber){
         window.location.href = "./home.html"
-        
     }
     else{
-        alert("Invalit Number And Password")
+        alert("Invalid pin number")
     }
-
 })

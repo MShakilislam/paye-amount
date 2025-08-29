@@ -2,116 +2,112 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Payooo Wallet</title>
+  <title>Emergency Service Directory</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans">
 
-  <!-- Header -->
-  <header class="bg-white shadow p-4 flex justify-between items-center">
-    <h1 class="text-xl font-bold text-blue-600">💳 $45000</h1>
-    <button id="logoutBtn" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg">
-      Log Out
-    </button>
+  <!-- Navbar -->
+  <nav class="bg-green-900 text-white px-6 py-3 flex justify-between items-center">
+    <div class="flex items-center gap-2">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Flag_of_Bangladesh.svg/32px-Flag_of_Bangladesh.svg.png" class="w-6 h-6">
+      <h1 class="text-xl font-bold">Emergency Service</h1>
+    </div>
+    <div class="flex items-center gap-4">
+      <span class="bg-white text-green-900 px-3 py-1 rounded-full text-sm">❤️ 100</span>
+      <span class="bg-white text-green-900 px-3 py-1 rounded-full text-sm">📋 2 Copy</span>
+    </div>
+  </nav>
+
+  <!-- Header Section -->
+  <header class="bg-green-800 text-white text-center py-6 shadow">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Seal_of_the_Government_of_Bangladesh.svg/80px-Seal_of_the_Government_of_Bangladesh.svg.png" class="mx-auto w-16 mb-2">
+    <h2 class="text-2xl font-bold">Emergency Service Directory</h2>
+    <p class="text-sm">Government Emergency Services at Your Fingertip – A Project by Government of Bangladesh</p>
   </header>
 
-  <!-- Welcome -->
-  <section class="bg-white p-6 shadow mt-2">
-    <h2 class="text-lg font-bold">🔥 Welcome to Payooo!</h2>
-    <p class="text-gray-500 text-sm">Enjoy easy and convenient financial services with us.<br>
-    Cashout charge is low and secure.</p>
-  </section>
+  <!-- Main Section -->
+  <main class="grid grid-cols-4 gap-6 p-6">
 
-  <!-- Services -->
-  <section class="grid grid-cols-3 gap-4 bg-white p-6 mt-2 shadow">
-    <button class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50">
-      <span>💰</span>
-      <span>Add Money</span>
-    </button>
-    <button class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50">
-      <span>💸</span>
-      <span>Cashout</span>
-    </button>
-    <button class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50">
-      <span>🔄</span>
-      <span>Transfer</span>
-    </button>
-    <button class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50">
-      <span>🎁</span>
-      <span>Get Bonus</span>
-    </button>
-    <button class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50">
-      <span>🧾</span>
-      <span>Pay Bill</span>
-    </button>
-    <button class="flex flex-col items-center p-4 border rounded-lg hover:bg-blue-50">
-      <span>📊</span>
-      <span>Transactions</span>
-    </button>
-  </section>
+    <!-- Cards -->
+    <div id="card-container" class="col-span-3 grid grid-cols-3 gap-4"></div>
 
-  <!-- Add Money Form -->
-  <section class="bg-white p-6 mt-4 shadow">
-    <h2 class="text-lg font-bold mb-4">Add Money</h2>
-    <form id="addMoneyForm" class="space-y-4">
-      
-      <!-- Bank Select -->
-      <div>
-        <label class="block text-sm font-medium">Select A Bank</label>
-        <select id="bank" class="w-full border rounded-lg p-2 focus:ring focus:ring-blue-200">
-          <option value="">Pick a bank</option>
-          <option value="dbbl">DBBL</option>
-          <option value="bkash">bKash</option>
-          <option value="nagad">Nagad</option>
-        </select>
+    <!-- Call History -->
+    <div class="bg-white rounded-xl shadow-lg p-4">
+      <div class="flex justify-between items-center mb-3">
+        <h2 class="text-lg font-bold text-green-900">📞 Call History</h2>
+        <button id="clearHistory" class="text-red-600 text-sm hover:underline">Clear</button>
       </div>
+      <ul id="historyList" class="space-y-2 text-sm text-gray-700"></ul>
+    </div>
 
-      <!-- Account Number -->
-      <div>
-        <label class="block text-sm font-medium">Bank Account Number</label>
-        <input id="account" type="text" maxlength="11" placeholder="Enter 11 digit Account Number" class="w-full border rounded-lg p-2 focus:ring focus:ring-blue-200">
-      </div>
+  </main>
 
-      <!-- Amount -->
-      <div>
-        <label class="block text-sm font-medium">Amount to Add</label>
-        <input id="amount" type="number" placeholder="Enter Amount" class="w-full border rounded-lg p-2 focus:ring focus:ring-blue-200">
-      </div>
-
-      <!-- Pin -->
-      <div>
-        <label class="block text-sm font-medium">Pin Number</label>
-        <input id="pin" type="password" maxlength="4" placeholder="Enter 4 digit pin" class="w-full border rounded-lg p-2 focus:ring focus:ring-blue-200">
-      </div>
-
-      <!-- Submit -->
-      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Add Money</button>
-    </form>
-  </section>
-
-  <!-- JS -->
   <script>
-    // Logout
-    document.getElementById('logoutBtn').addEventListener('click', () => {
-      alert("You have logged out!");
+    // Emergency Numbers Data
+    const emergencyNumbers = [
+      { id: 1, title: "Fire Service Number", service: "Fire Service", number: "999" },
+      { id: 2, title: "National Emergency Number", service: "Police", number: "999" },
+      { id: 3, title: "Bangladesh Railway Helpline", service: "Railway", number: "131" },
+      { id: 4, title: "Anti-Corruption Helpline", service: "ACC", number: "106" },
+      { id: 5, title: "Ambulance Service", service: "Health", number: "109" },
+      { id: 6, title: "Women & Child Helpline", service: "Support", number: "10921" }
+    ];
+
+    const cardContainer = document.getElementById("card-container");
+    const historyList = document.getElementById("historyList");
+    const clearHistory = document.getElementById("clearHistory");
+
+    // Render Cards Dynamically
+    function renderCards() {
+      cardContainer.innerHTML = "";
+      emergencyNumbers.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "bg-white p-4 rounded-2xl shadow-md hover:shadow-xl transition duration-300 flex flex-col justify-between";
+
+        card.innerHTML = `
+          <div>
+            <h3 class="font-bold text-lg text-green-800">${item.title}</h3>
+            <p class="text-gray-500 text-sm">${item.service}</p>
+            <p class="text-3xl font-mono my-3 text-green-900">${item.number}</p>
+          </div>
+          <div class="flex justify-between gap-2 mt-2">
+            <button class="copyBtn flex-1 bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded-lg text-sm" data-number="${item.number}">📋 Copy</button>
+            <button class="callBtn flex-1 bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg text-sm" data-title="${item.title}" data-number="${item.number}">📞 Call</button>
+          </div>
+        `;
+        cardContainer.appendChild(card);
+      });
+    }
+
+    renderCards();
+
+    // Copy Button
+    document.addEventListener("click", e => {
+      if (e.target.classList.contains("copyBtn")) {
+        const number = e.target.dataset.number;
+        navigator.clipboard.writeText(number);
+        e.target.textContent = "✅ Copied";
+        setTimeout(() => { e.target.textContent = "📋 Copy"; }, 1500);
+      }
     });
 
-    // Add Money Form
-    document.getElementById('addMoneyForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      let bank = document.getElementById('bank').value;
-      let account = document.getElementById('account').value;
-      let amount = document.getElementById('amount').value;
-      let pin = document.getElementById('pin').value;
+    // Call Button
+    document.addEventListener("click", e => {
+      if (e.target.classList.contains("callBtn")) {
+        const title = e.target.dataset.title;
+        const number = e.target.dataset.number;
 
-      if(!bank || account.length !== 11 || !amount || pin.length !== 4){
-        alert("⚠️ Please fill all fields correctly!");
-        return;
+        const li = document.createElement("li");
+        li.className = "p-2 bg-gray-100 rounded-lg shadow-sm";
+        li.textContent = `${title} (${number}) - ${new Date().toLocaleTimeString()}`;
+        historyList.prepend(li);
       }
+    });
 
-      alert(`✅ ${amount} tk added successfully from ${bank.toUpperCase()}!`);
-      e.target.reset();
+    // Clear History
+    clearHistory.addEventListener("click", () => {
+      historyList.innerHTML = "";
     });
   </script>
 
